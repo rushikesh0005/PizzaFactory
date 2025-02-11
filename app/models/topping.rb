@@ -7,9 +7,9 @@ class Topping < ApplicationRecord
 
   def set_status_based_on_quantity
     if quantity.present? && quantity > 0
-      self.status = 'active'
+      self.active = 0
     else
-      self.status = 'inactive'
+      self.active = 1
     end
   end
 end
