@@ -3,6 +3,7 @@ class OrderItem < ApplicationRecord
   belongs_to :pizza
   belongs_to :crust
   belongs_to :side, optional: true
+  has_and_belongs_to_many :toppings 
 
   validate :validate_toppings
 
@@ -13,6 +14,17 @@ class OrderItem < ApplicationRecord
 
     if pizza.category == "non-vegetarian" && toppings.any? { |t| t.name == "Paneer" }
       errors.add(:toppings, "Non-veg pizza can't have paneer topping")
+    end
+  end
+
+  def reduce_inventory
+    pizza.decrement!(:quantity) if pizza.quantity.present?
+
+    crust.decrement!(:quantity) if crust.quantity.present?
+
+    side.decrement!(:quantity) if side.present? && side.quantity.present?
+    toppings.each do |topping|
+      topping.decrement!(:quantity) if topping.quantity.present?
     end
   end
 end

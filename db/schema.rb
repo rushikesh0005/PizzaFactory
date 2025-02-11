@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_02_11_181127) do
+ActiveRecord::Schema[8.0].define(version: 2025_02_11_203530) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -19,6 +19,8 @@ ActiveRecord::Schema[8.0].define(version: 2025_02_11_181127) do
     t.decimal "price"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "quantity", default: 0
+    t.boolean "active", default: false
   end
 
   create_table "inventories", force: :cascade do |t|
@@ -42,6 +44,11 @@ ActiveRecord::Schema[8.0].define(version: 2025_02_11_181127) do
     t.index ["side_id"], name: "index_order_items_on_side_id"
   end
 
+  create_table "order_items_toppings", id: false, force: :cascade do |t|
+    t.bigint "order_item_id", null: false
+    t.bigint "topping_id", null: false
+  end
+
   create_table "orders", force: :cascade do |t|
     t.string "status"
     t.decimal "total_price"
@@ -57,6 +64,8 @@ ActiveRecord::Schema[8.0].define(version: 2025_02_11_181127) do
     t.string "size"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "quantity", default: 0
+    t.boolean "active", default: false
   end
 
   create_table "sides", force: :cascade do |t|
@@ -64,6 +73,8 @@ ActiveRecord::Schema[8.0].define(version: 2025_02_11_181127) do
     t.decimal "price"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "quantity", default: 0
+    t.boolean "active", default: false
   end
 
   create_table "toppings", force: :cascade do |t|
@@ -72,6 +83,8 @@ ActiveRecord::Schema[8.0].define(version: 2025_02_11_181127) do
     t.decimal "price"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "quantity", default: 0
+    t.boolean "active", default: false
   end
 
   create_table "users", force: :cascade do |t|
