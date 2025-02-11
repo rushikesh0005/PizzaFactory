@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
   devise_for :users
   resources :orders, only: [:create, :show]
-  resources :pizzas, only: [:index]
-  resources :inventory, only: [:index, :update]
+  resources :pizzas
+  resources :inventories, only: [:index, :update]
+  resources :crusts
+  resources :sides
+  resources :toppings
+
 end
