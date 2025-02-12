@@ -1,24 +1,33 @@
-# README
+# <span style="font-size: 48px;">Pizza Order Service</span>
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+> **Note:** All code is done in the `dev` branch, which originated from the `main` branch.
 
-Things you may want to cover:
+## Introduction
 
-* Ruby version
+Pizza Order Service is a Ruby on Rails application that allows customers to place pizza orders with customizable crusts, toppings, and sides. It provides an API for managing orders, inventory, and pricing calculations.
 
-* System dependencies
+## Features
 
-* Configuration
+- Order pizzas with customizable sizes, crusts, and toppings
+- Includes both vegetarian and non-vegetarian toppings
+- Large-size pizzas come with two free toppings
+- Supports adding sides like cold drinks and mousse cake
+- Inventory management to track item availability
+- User authentication with Devise
+- RESTful API endpoints for placing and retrieving orders
 
-* Database creation
+## Tech Stack
 
-* Database initialization
+- **Backend**: Ruby on Rails
+- **Database**: PostgreSQL
+- **Authentication**: Devise
+- **API Testing**: RSpec
+  
+### Prerequisites
 
-* How to run the test suite
+Ensure you have the following installed:
 
-* Services (job queues, cache servers, search engines, etc.)
+- Ruby (3.x recommended)
+- Rails (7.x recommended)
+- PostgreSQL
 
-* Deployment instructions
-
-* ...
